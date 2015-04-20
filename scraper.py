@@ -30,7 +30,7 @@ listItems = spendList.findAll('li')
 for listItem in listItems:
 	anchors = listItem.findAll('a',href=True)
 	for anchor in anchors:
-		url = anchor['href']
+		url = 'http://www.walthamforest.gov.uk' + anchor['href']
 		if '.csv' in url:
 			title = listItem.text
 			# create the right strings for the new filename
