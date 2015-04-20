@@ -24,6 +24,8 @@ soup = BeautifulSoup(html)
 
 # find all entries with the required class
 block = soup.find('div',{'class':'page-content'})
+print block
+'''
 spendList = block.find('ul')[1] # get the second <ul> tag
 listItems = spendList.findAll('li')
 
@@ -40,3 +42,4 @@ for listItem in listItems:
 		todays_date = str(datetime.now())
 		scraperwiki.sqlite.save(unique_keys=['l'], data={"l": url, "f": filename, "d": todays_date })
 		print filename
+'''
