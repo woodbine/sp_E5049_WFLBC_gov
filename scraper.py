@@ -24,8 +24,7 @@ soup = BeautifulSoup(html)
 
 # find all entries with the required class
 block = soup.find('div',{'id':'page-content'})
-
-spendList = block.find('ul')[1] # get the second <ul> tag
+spendList = block.findAll('ul')[1] # get the second <ul> tag
 listItems = spendList.findAll('li')
 
 for listItem in listItems:
