@@ -28,16 +28,17 @@ spendList = block.findAll('ul')[1] # get the second <ul> tag
 listItems = spendList.findAll('li')
 
 for listItem in listItems:
-	anchor = listItem.findAll('a',href=True)[1] # get 2nd url in list item
-	url = anchor['href']
-	if '.csv' in url and 'expenditure' in url:
-		title = listItem.text
-		# create the right strings for the new filename
-		csvYr = title.split(' ')[1]
-		csvMth = title.split(' ')[0][:3]
-		csvMth = csvMth.upper()
-		csvMth = convert_mth_strings(csvMth);
-		filename = entity_id + "_" + csvYr + "_" + csvMth + ".csv"
-		todays_date = str(datetime.now())
-		scraperwiki.sqlite.save(unique_keys=['l'], data={"l": url, "f": filename, "d": todays_date })
-		print filename
+	anchors = listItem.findAll('a',href=True)
+	for anchor in anchors:
+		url = anchor['href']
+		if '.csv' in url and 'expenditure' in url:
+			title = listItem.text
+			# create the right strings for the new filename
+			csvYr = title.split(' ')[1]
+			csvMth = title.split(' ')[0][:3]
+			csvMth = csvMth.upper()
+			csvMth = convert_mth_strings(csvMth);
+			filename = entity_id + "_" + csvYr + "_" + csvMth + ".csv"
+			todays_date = str(datetime.now())
+			scraperwiki.sqlite.save(unique_keys=['l'], data={"l": url, "f": filename, "d": todays_date })
+			print filename
