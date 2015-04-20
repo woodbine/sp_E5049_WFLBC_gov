@@ -31,6 +31,7 @@ for listItem in listItems:
 	anchors = listItem.findAll('a',href=True)
 	for anchor in anchors:
 		url = 'http://www.walthamforest.gov.uk' + anchor['href']
+		url = url.replace(' ','%20')
 		if '.csv' in url:
 			title = listItem.text
 			# create the right strings for the new filename
