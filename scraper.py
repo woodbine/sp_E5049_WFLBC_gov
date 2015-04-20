@@ -28,7 +28,8 @@ spendList = block.findAll('ul')[1] # get the second <ul> tag
 listItems = spendList.findAll('li')
 
 for listItem in listItems:
-	url = listItem.a['href'][1] # get 2nd url in list item
+	anchor = listItem.findAll('a',href=True)[1] # get 2nd url in list item
+	url = anchor['href']
 	if '.csv' in url and 'expenditure' in url:
 		title = listItem.text
 		# create the right strings for the new filename
