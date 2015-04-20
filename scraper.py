@@ -23,7 +23,7 @@ html = urllib2.urlopen(url)
 soup = BeautifulSoup(html)
 
 # find all entries with the required class
-block = soup.find('div':{'class':'page-content'})
+block = soup.find('div',{'class':'page-content'})
 spendList = block.find('ul')[1] # get the second <ul> tag
 listItems = spendList.findAll('li')
 
